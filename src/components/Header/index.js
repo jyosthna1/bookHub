@@ -1,44 +1,58 @@
+import {HiMenu} from 'react-icons/hi'
+import {IoIosCloseCircle} from 'react-icons/io'
+import {Component} from 'react'
 import './index.css'
 
-const Header = () => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-    <div className="container">
-      <img
-        src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
-        alt="website login"
-        className="websiteLogin"
-      />
+class Header extends Component {
+  state = {smallDevicesMenu: false}
 
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon">(current)</span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div className="navbar-nav ml-auto">
-          <a className="nav-link active" id="navItem1" href="#wcuSection">
-            Why Choose Us?
-            <span className="sr-only">(current)</span>
-          </a>
-          <a className="nav-link" href="#exploreMenuSection" id="navItem2">
-            Explore Menu
-          </a>
-          <a className="nav-link" href="#deliveryPaymentSection" id="navItem3">
-            Delivery & Payment
-          </a>
-          <a className="nav-link" href="#followUsSection" id="navItem4">
-            Follow Us
-          </a>
+  onClickChangeMenu = () => {
+    this.setState({
+      smallDevicesMenu: true,
+    })
+  }
+
+  onClickCloseMenu = () => {
+    this.setState({
+      smallDevicesMenu: false,
+    })
+  }
+
+  render() {
+    const {smallDevicesMenu} = this.state
+    return (
+      <div className="header-page">
+        <div className="header-container">
+          <img
+            src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
+            alt="website logo"
+            className="website-logo"
+          />
+          <div className="page-icons-container">
+            <p className="pageName">Home</p>
+            <p className="pageName">Bookshelves</p>
+            <button type="button" className="logoutButton">
+              Logout
+            </button>
+          </div>
+          <HiMenu className="menuIcon" onClick={this.onClickChangeMenu} />
         </div>
+        {smallDevicesMenu && (
+          <div className="smallDevicesItems">
+            <p className="pageName">Home</p>
+            <p className="pageName">Bookshelves</p>
+            <button type="button" className="logoutButton">
+              Logout
+            </button>
+            <IoIosCloseCircle
+              className="closeIcon"
+              onClick={this.onClickCloseMenu}
+            />
+          </div>
+        )}
       </div>
-    </div>
-  </nav>
-)
+    )
+  }
+}
 
 export default Header

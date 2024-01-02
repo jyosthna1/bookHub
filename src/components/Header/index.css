@@ -1,0 +1,82 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 36px;
+  padding-right: 36px;
+  background-color: #ffffff;
+}
+.website-logo {
+  height: 40px;
+  width: 160px;
+}
+@media screen and (min-width: 768px) {
+  .header-container {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.page-icons-container {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .page-icons-container {
+    display: flex;
+    align-items: center;
+  }
+}
+.pageName {
+  font-family: 'Roboto';
+  font-size: 13px;
+  font-weight: 500;
+  padding-right: 15px;
+}
+.pageNameGrey {
+  color: gray;
+}
+.pageNameBlue {
+  color: #3392ff;
+}
+.logoutButton {
+  background-color: #3392ff;
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 400;
+  border-width: 0px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 5px;
+}
+.menuIcon {
+  height: 22px;
+  width: 22px;
+}
+@media screen and (min-width: 768px) {
+  .menuIcon {
+    display: none;
+  }
+}
+
+.smallDevicesItems {
+  display: flex;
+  padding-left: 36px;
+  padding-right: 36px;
+  align-items: center;
+  margin: 0px;
+}
+@media screen and (min-width: 768px) {
+  .smallDevicesItems {
+    display: none;
+  }
+}
+.closeIcon {
+  margin-left: 16px;
+  height: 25px;
+  width: 25px;
+}
