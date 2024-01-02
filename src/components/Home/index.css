@@ -1,0 +1,31 @@
+.home-container {
+  background-color: #f8fafc;
+  height: 100vh;
+}
+.find-info-container {
+  padding-left: 55px;
+  padding-right: 55px;
+}
+.findHead {
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+}
+@media screen and (min-width: 768px) {
+  .findHead {
+    font-size: 30px;
+  }
+}
+.description {
+  color: #475569;
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+}
+@media screen and (min-width: 768px) {
+  .description {
+    font-size: 18px;
+  }
+}
