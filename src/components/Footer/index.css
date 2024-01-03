@@ -1,0 +1,38 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+  align-items: center;
+}
+.footer-container {
+  display: flex;
+}
+.google-button {
+  background-color: transparent;
+  border-width: 0px;
+  margin-right: 10px;
+}
+
+.icon {
+  color: #3d3c3c;
+  height: 14px;
+  width: 14px;
+}
+@media screen and (min-width: 768px) {
+  .icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+.contact-us {
+  font-family: 'Roboto';
+  font-size: 13px;
+  font-weight: 500;
+  color: #3d3c3c;
+}
+@media screen and (min-width: 768px) {
+  .contact-us {
+    font-size: 17px;
+  }
+}

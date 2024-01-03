@@ -8,6 +8,7 @@ import Cookie from 'js-cookie'
 import './index.css'
 import Header from '../Header'
 import BookItem from '../BookItem'
+import Footer from '../Footer'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -128,6 +129,7 @@ class Home extends Component {
           </div>
           {this.renderRelatedBooks()}
         </div>
+        <Footer />
       </div>
     )
   }
