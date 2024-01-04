@@ -1,0 +1,59 @@
+.book-shelves-container {
+  background-color: #f8fafc;
+  height: 100vh;
+}
+.book-shelves-small-devices {
+  padding-left: 35px;
+  padding-top: 30px;
+  padding-right: 50px;
+}
+.search-container {
+  display: flex;
+  border: 1px solid #edeff1;
+}
+.search {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #94a3b8;
+  outline: none;
+  padding: 10px;
+  background-color: #ffffff;
+  border-width: 0px;
+  width: 85%;
+}
+.searchButton {
+  flex-grow: 1;
+  border-width: 0px;
+  background-color: #edeff1;
+}
+.searchIcon {
+  color: #94a3b8;
+  width: 17px;
+  height: 17px;
+}
+.bookShelvesHead {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #334155;
+}
+.bookshelves-tabs-container {
+  list-style-type: none;
+  padding: 0px;
+  display: flex;
+}
+.tab-button {
+  margin-right: 15px;
+  padding: 3px 15px 3px 15px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-family: 'Roboto';
+  border: 1px solid #0284c7;
+}
+.tab-button-background {
+  background-color: transparent;
+  color: #0284c7;
+}
+.tab-button-background-blue {
+  background-color: #0284c7;
+  color: #ffffff;
+}
