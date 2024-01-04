@@ -24,14 +24,14 @@ const bookShelvesTabs = [
 
 const TabItem = props => {
   const {tabDetails, activeTabCurrent} = props
-  const {displayText} = tabDetails
+  const {displayText, id} = tabDetails
 
   const activeTabClassName = activeTabCurrent
     ? 'tab-button-background-blue'
     : 'tab-button-background'
 
   return (
-    <li>
+    <li key={id}>
       <button type="button" className={`tab-button ${activeTabClassName}`}>
         {displayText}
       </button>
