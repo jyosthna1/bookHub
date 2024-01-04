@@ -1,6 +1,5 @@
 .home-container {
   background-color: #f8fafc;
-  height: 100vh;
 }
 .find-info-container {
   padding-left: 36px;
@@ -118,4 +117,15 @@
 .failureView {
   width: 150px;
   height: 100px;
+}
+@media screen and (max-width: 767px) {
+  .slider-large-devices {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .slider-small-devices {
+    display: none;
+  }
 }
