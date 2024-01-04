@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
+import Cookie from 'js-cookie'
 import './index.css'
 import Header from '../Header'
 
@@ -13,25 +14,36 @@ const bookShelvesTabs = [
     displayText: 'Read',
   },
   {
-    id: 'CURRENTLY READING',
+    id: 'CURRENTLY_READING',
     displayText: 'Currently Reading',
   },
   {
-    id: 'WANT TO READ',
+    id: 'WANT_TO_READ',
     displayText: 'Want To Read',
   },
 ]
 
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+}
+
 const TabItem = props => {
-  const {tabDetails, activeTabCurrent} = props
+  const {tabDetails, activeTabCurrent, onClickTab} = props
   const {displayText, id} = tabDetails
 
   const activeTabClassName = activeTabCurrent
     ? 'tab-button-background-blue'
     : 'tab-button-background'
 
+  const onClickTabValue = () => {
+    onClickTab(id)
+  }
+
   return (
-    <li key={id}>
+    <li key={id} onClick={onClickTabValue}>
       <button type="button" className={`tab-button ${activeTabClassName}`}>
         {displayText}
       </button>
@@ -40,17 +52,55 @@ const TabItem = props => {
 }
 
 class BookShelves extends Component {
-  state = {activeTab: bookShelvesTabs[0].displayText}
+  state = {
+    activeTab: bookShelvesTabs[0].id,
+    apiStatus: apiStatusConstants.initial,
+    bookShelvesArray: [],
+    searchInput: '',
+  }
+
+  componentDidMount() {
+    this.getBookShelvesData()
+  }
+
+  getBookShelvesData = async () => {
+    this.setState({apiStatus: apiStatusConstants.inProgress})
+    const {searchInput, activeTab} = this.state
+    const url = `https://apis.ccbp.in/book-hub/books?shelf=${activeTab}&search=${searchInput}`
+    const jwtToken = Cookie.get('jwt_token')
+    const options = {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      method: 'GET',
+    }
+    const response = await fetch(url, options)
+    const data = await response.json()
+  }
+
+  onClickTab = value => {
+    this.setState({activeTab: value}, this.getBookShelvesData)
+  }
+
+  onChangeSearch = event => {
+    this.setState({searchInput: event.target.value})
+  }
 
   render() {
-    const {activeTab} = this.state
+    const {activeTab, searchInput} = this.state
 
     return (
       <div className="book-shelves-container">
         <Header />
         <div className="book-shelves-small-devices">
           <div className="search-container">
-            <input type="search" className="search" placeholder="search" />
+            <input
+              type="search"
+              className="search"
+              placeholder="search"
+              onChange={this.onChangeSearch}
+              value={searchInput}
+            />
             <button
               type="button"
               testid="searchButton"
@@ -65,7 +115,8 @@ class BookShelves extends Component {
               <TabItem
                 id={eachTabItem.id}
                 tabDetails={eachTabItem}
-                activeTabCurrent={activeTab === eachTabItem.displayText}
+                activeTabCurrent={activeTab === eachTabItem.id}
+                onClickTab={this.onClickTab}
               />
             ))}
           </ul>
