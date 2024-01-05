@@ -141,8 +141,11 @@ class BookShelves extends Component {
             <img
               src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704451139/Group_aegii4.png"
               alt="no books"
-              className="noBooks"
+              className="noBooksImage"
             />
+            <h1 className="not-found-head">
+              Your search for dsadsdsad did not find any matches.
+            </h1>
           </div>
         ) : (
           <ul className="BookShelveItem-unorder">
