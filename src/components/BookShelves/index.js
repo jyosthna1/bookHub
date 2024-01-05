@@ -80,7 +80,7 @@ class BookShelves extends Component {
       const data = await response.json()
       const bookData = data.books.map(eachBookData => ({
         authorName: eachBookData.author_name,
-        coverPic: eachBookData.coverPic,
+        coverPic: eachBookData.cover_pic,
         id: eachBookData.id,
         rating: eachBookData.rating,
         readStatus: eachBookData.read_status,
@@ -139,7 +139,7 @@ class BookShelves extends Component {
           </ul>
           <ul className="BookShelveItem-unorder">
             {bookShelvesArray.map(eachShelveItem => (
-              <bookShelvesArray
+              <BookShelveItem
                 details={eachShelveItem}
                 key={eachShelveItem.id}
               />
