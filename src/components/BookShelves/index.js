@@ -3,6 +3,7 @@ import {BsSearch} from 'react-icons/bs'
 import Cookie from 'js-cookie'
 import './index.css'
 import Header from '../Header'
+import BookShelveItem from '../BookShelveItem'
 
 const bookShelvesTabs = [
   {
@@ -75,7 +76,23 @@ class BookShelves extends Component {
       method: 'GET',
     }
     const response = await fetch(url, options)
-    const data = await response.json()
+    if (response.ok === true) {
+      const data = await response.json()
+      const bookData = data.books.map(eachBookData => ({
+        authorName: eachBookData.author_name,
+        coverPic: eachBookData.coverPic,
+        id: eachBookData.id,
+        rating: eachBookData.rating,
+        readStatus: eachBookData.read_status,
+        title: eachBookData.title,
+      }))
+      this.setState({
+        bookShelvesArray: bookData,
+        apiStatus: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
+    }
   }
 
   onClickTab = value => {
@@ -87,7 +104,7 @@ class BookShelves extends Component {
   }
 
   render() {
-    const {activeTab, searchInput} = this.state
+    const {activeTab, searchInput, bookShelvesArray} = this.state
 
     return (
       <div className="book-shelves-container">
@@ -117,6 +134,14 @@ class BookShelves extends Component {
                 tabDetails={eachTabItem}
                 activeTabCurrent={activeTab === eachTabItem.id}
                 onClickTab={this.onClickTab}
+              />
+            ))}
+          </ul>
+          <ul className="BookShelveItem-unorder">
+            {bookShelvesArray.map(eachShelveItem => (
+              <bookShelvesArray
+                details={eachShelveItem}
+                key={eachShelveItem.id}
               />
             ))}
           </ul>
