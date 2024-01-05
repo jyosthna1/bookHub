@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
 import Cookie from 'js-cookie'
+import Loader from 'react-loader-spinner'
 import './index.css'
 import Header from '../Header'
 import BookShelveItem from '../BookShelveItem'
@@ -96,11 +97,63 @@ class BookShelves extends Component {
   }
 
   onClickTab = value => {
-    this.setState({activeTab: value}, this.getBookShelvesData)
+    this.setState({activeTab: value})
   }
 
   onChangeSearch = event => {
-    this.setState({searchInput: event.target.value})
+    this.setState({searchInput: event.target.value}, this.getBookShelvesData)
+  }
+
+  onKeyDownEnter = event => {
+    if (event.key === 'Enter') {
+      this.getBookShelvesData()
+    }
+  }
+
+  renderLoadingView = () => (
+    <div className="loader-container" testid="loader">
+      <Loader type="TailSpin" color="blue" height="50" width="50" />
+    </div>
+  )
+
+  renderFailureView = () => (
+    <div className="failure-container">
+      <img
+        src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704263013/Group_7522_sbjwvs.png"
+        alt="failure view"
+        className="failureView"
+      />
+      <h1 className="failure-head">Something went wrong, Please try again.</h1>
+      <button className="failure-button" type="button">
+        Try Again
+      </button>
+    </div>
+  )
+
+  renderSuccessView = () => {
+    const {bookShelvesArray} = this.state
+    return (
+      <ul className="BookShelveItem-unorder">
+        {bookShelvesArray.map(eachShelveItem => (
+          <BookShelveItem details={eachShelveItem} key={eachShelveItem.id} />
+        ))}
+      </ul>
+    )
+  }
+
+  apiStatusSwitch = () => {
+    const {apiStatus} = this.state
+
+    switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return this.renderLoadingView()
+      case apiStatusConstants.failure:
+        return this.renderFailureView()
+      case apiStatusConstants.success:
+        return this.renderSuccessView()
+      default:
+        return null
+    }
   }
 
   render() {
@@ -117,6 +170,7 @@ class BookShelves extends Component {
               placeholder="search"
               onChange={this.onChangeSearch}
               value={searchInput}
+              onKeyDown={this.onKeyDownEnter}
             />
             <button
               type="button"
@@ -137,14 +191,7 @@ class BookShelves extends Component {
               />
             ))}
           </ul>
-          <ul className="BookShelveItem-unorder">
-            {bookShelvesArray.map(eachShelveItem => (
-              <BookShelveItem
-                details={eachShelveItem}
-                key={eachShelveItem.id}
-              />
-            ))}
-          </ul>
+          {this.apiStatusSwitch()}
         </div>
       </div>
     )
