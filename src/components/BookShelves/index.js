@@ -132,12 +132,29 @@ class BookShelves extends Component {
 
   renderSuccessView = () => {
     const {bookShelvesArray} = this.state
+    const bookShelvesArrayLength = bookShelvesArray.length === 0
+
     return (
-      <ul className="BookShelveItem-unorder">
-        {bookShelvesArray.map(eachShelveItem => (
-          <BookShelveItem details={eachShelveItem} key={eachShelveItem.id} />
-        ))}
-      </ul>
+      <>
+        {bookShelvesArrayLength ? (
+          <div className="not-found-container">
+            <img
+              src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704451139/Group_aegii4.png"
+              alt="no books"
+              className="noBooks"
+            />
+          </div>
+        ) : (
+          <ul className="BookShelveItem-unorder">
+            {bookShelvesArray.map(eachShelveItem => (
+              <BookShelveItem
+                details={eachShelveItem}
+                key={eachShelveItem.id}
+              />
+            ))}
+          </ul>
+        )}
+      </>
     )
   }
 
