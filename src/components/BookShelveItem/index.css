@@ -55,3 +55,6 @@
 .statusData {
   color: #0284c7;
 }
+.link {
+  text-decoration: none;
+}

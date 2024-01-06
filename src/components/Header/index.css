@@ -2,12 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding-top: 13px;
   padding-bottom: 13px;
   padding-left: 36px;
   padding-right: 36px;
-  background-color: #ffffff;
+  border: 1px solid #e4e7eb;
 }
 .website-logo {
   height: 40px;
