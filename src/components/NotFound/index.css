@@ -1,0 +1,37 @@
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.not-found {
+  margin-bottom: 30px;
+}
+.not-found-head {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 20px;
+  color: #334155;
+}
+@media screen and (min-width: 768px) {
+  .not-found-head {
+    font-size: 27px;
+  }
+}
+.not-found-para {
+  font-family: 'Roboto';
+  margin: 0px;
+  font-size: 14px;
+  color: #334155;
+}
+.goBackButton {
+  font-family: 'Roboto';
+  border-width: 0px;
+  margin-top: 20px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #0284c7;
+  padding: 10px 15px 10px 15px;
+  border-radius: 10px;
+}

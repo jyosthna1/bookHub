@@ -1,10 +1,11 @@
 import './App.css'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
 import Home from './components/Home'
 import BookShelves from './components/BookShelves'
 import BookDetails from './components/BookDetails'
+import NotFound from './components/NotFound'
 // use the below bookshelvesList for rendering read status of book items in Bookshelves Route
 
 const bookshelvesList = [
@@ -36,6 +37,8 @@ const App = () => (
     <ProtectedRoute exact path="/" component={Home} />
     <ProtectedRoute exact path="/shelf" component={BookShelves} />
     <ProtectedRoute exact path="/books/:id" component={BookDetails} />
+    <Route path="/not-found" component={NotFound} />
+    <Redirect to="/not-found" />
   </Switch>
 )
 
