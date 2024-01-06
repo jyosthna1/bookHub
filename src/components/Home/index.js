@@ -1,5 +1,5 @@
 import Slider from 'react-slick'
-
+import {Link} from 'react-router-dom'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Loader from 'react-loader-spinner'
@@ -68,9 +68,11 @@ class Home extends Component {
         className="failureView"
       />
       <h1 className="failure-head">Something went wrong, Please try again.</h1>
-      <button className="failure-button" type="button">
-        Try Again
-      </button>
+      <Link to="/" className="link-style">
+        <button className="failure-button" type="button">
+          Try Again
+        </button>
+      </Link>
     </div>
   )
 
@@ -139,9 +141,11 @@ class Home extends Component {
         <div className="slider-container">
           <div className="header-button-container">
             <h1 className="slider-head">Top Related Books</h1>
-            <button className="find-button-large" type="button">
-              Find Books
-            </button>
+            <Link to="/shelf" className="link-style">
+              <button className="find-button-large" type="button">
+                Find Books
+              </button>
+            </Link>
           </div>
           {this.renderRelatedBooks()}
         </div>

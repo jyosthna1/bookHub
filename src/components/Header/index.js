@@ -1,6 +1,8 @@
 import {HiMenu} from 'react-icons/hi'
 import {IoIosCloseCircle} from 'react-icons/io'
 import {Component} from 'react'
+import {Link} from 'react-router-dom'
+import Cookie from 'js-cookie'
 import './index.css'
 
 class Header extends Component {
@@ -23,14 +25,20 @@ class Header extends Component {
     return (
       <div className="header-page">
         <div className="header-container">
-          <img
-            src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
-            alt="website logo"
-            className="website-logo"
-          />
+          <Link to="/" className="link-style">
+            <img
+              src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
+              alt="website logo"
+              className="website-logo"
+            />
+          </Link>
           <div className="page-icons-container">
-            <p className="pageName">Home</p>
-            <p className="pageName">Bookshelves</p>
+            <Link to="/" className="link-style">
+              <p className="pageName">Home</p>
+            </Link>
+            <Link to="/shelf" className="link-style">
+              <p className="pageName">Bookshelves</p>
+            </Link>
             <button type="button" className="logoutButton">
               Logout
             </button>
@@ -39,8 +47,12 @@ class Header extends Component {
         </div>
         {smallDevicesMenu && (
           <div className="smallDevicesItems">
-            <p className="pageName">Home</p>
-            <p className="pageName">Bookshelves</p>
+            <Link to="/" className="link-style">
+              <p className="pageName">Home</p>
+            </Link>
+            <Link to="/shelf" className="link-style">
+              <p className="pageName">Bookshelves</p>
+            </Link>
             <button type="button" className="logoutButton">
               Logout
             </button>
