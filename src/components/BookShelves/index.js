@@ -238,6 +238,29 @@ class BookShelves extends Component {
               ))}
             </ul>
           </div>
+          <div className="search-and-items-container">
+            <div className="search-and-head-container">
+              <h1 className="AllBooksHead">All Books</h1>
+              <div className="search-container-large">
+                <input
+                  type="search"
+                  className="searchLarge"
+                  placeholder="search"
+                  onChange={this.onChangeSearch}
+                  value={searchInput}
+                  onKeyDown={this.onKeyDownEnter}
+                />
+                <button
+                  type="button"
+                  testid="searchButton"
+                  className="searchButtonLarge"
+                >
+                  <BsSearch className="searchIcon" />
+                </button>
+              </div>
+            </div>
+            {this.apiStatusSwitch()}
+          </div>
         </div>
       </div>
     )

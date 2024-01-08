@@ -27,6 +27,12 @@
   display: flex;
   border: 1px solid #edeff1;
 }
+.search-container-large {
+  display: flex;
+  border: 1px solid #edeff1;
+  width: 300px;
+  align-self: flex-start;
+}
 .search {
   font-family: 'Roboto';
   font-size: 15px;
@@ -37,7 +43,22 @@
   border-width: 0px;
   width: 85%;
 }
+.searchLarge {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #94a3b8;
+  outline: none;
+  padding: 10px;
+  background-color: #ffffff;
+  border-width: 0px;
+  width: 85%;
+}
 .searchButton {
+  flex-grow: 1;
+  border-width: 0px;
+  background-color: #edeff1;
+}
+.searchButtonLarge {
   flex-grow: 1;
   border-width: 0px;
   background-color: #edeff1;
@@ -110,6 +131,13 @@
 .BookShelveItem-unorder {
   padding: 0px;
 }
+@media screen and (min-width: 768px) {
+  .BookShelveItem-unorder {
+    display: flex;
+
+    flex-wrap: wrap;
+  }
+}
 .not-found-container {
   display: flex;
   flex-direction: column;
@@ -173,4 +201,22 @@
   font-size: 13px;
   color: #334155;
   font-weight: 600;
+}
+.search-and-head-container {
+  display: flex;
+  justify-content: space-between;
+
+  flex-grow: 1;
+}
+.AllBooksHead {
+  font-family: 'Roboto';
+  font-size: 13px;
+  color: #334155;
+  font-weight: 600;
+}
+.search-and-items-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 20px;
 }
