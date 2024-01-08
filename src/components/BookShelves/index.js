@@ -44,6 +44,7 @@ const TabItem = props => {
   const activeTabClassName = activeTabCurrent
     ? 'tab-button-background-blue'
     : 'tab-button-background'
+  const fontColor = activeTabCurrent ? 'font-color-blue' : 'font-color-grey'
 
   const onClickTabValue = () => {
     onClickTab(value)
@@ -52,6 +53,9 @@ const TabItem = props => {
   return (
     <li key={value} onClick={onClickTabValue}>
       <button type="button" className={`tab-button ${activeTabClassName}`}>
+        {label}
+      </button>
+      <button type="button" className={`tab-button-large ${fontColor}`}>
         {label}
       </button>
     </li>
@@ -220,7 +224,21 @@ class BookShelves extends Component {
           </ul>
           {this.apiStatusSwitch()}
         </div>
-        <div className="book-shelves-large-devices">Hi</div>
+        <div className="book-shelves-large-devices">
+          <div className="Side-bar-container">
+            <h1 className="side-bar-head">Bookshelves</h1>
+            <ul className="bookshelves-tabs-container">
+              {bookshelvesList.map(eachTabItem => (
+                <TabItem
+                  id={eachTabItem.id}
+                  tabDetails={eachTabItem}
+                  activeTabCurrent={activeTab === eachTabItem.value}
+                  onClickTab={this.onClickTab}
+                />
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     )
   }

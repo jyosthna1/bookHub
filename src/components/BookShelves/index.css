@@ -16,6 +16,7 @@
   padding-left: 50px;
   padding-top: 30px;
   padding-right: 50px;
+  display: flex;
 }
 @media screen and (max-width: 767px) {
   .book-shelves-large-devices {
@@ -56,6 +57,11 @@
   padding: 0px;
   display: flex;
 }
+@media screen and (min-width: 768px) {
+  .bookshelves-tabs-container {
+    flex-direction: column;
+  }
+}
 .tab-button {
   margin-right: 15px;
   padding: 3px 15px 3px 15px;
@@ -64,6 +70,34 @@
   font-family: 'Roboto';
   border: 1px solid #0284c7;
   cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .tab-button {
+    display: none;
+  }
+}
+.tab-button-large {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .tab-button-large {
+    display: flex;
+    border-width: 0px;
+    background-color: transparent;
+    font-family: 'Roboto';
+    font-size: 11px;
+    padding: 0px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    cursor: pointer;
+  }
+}
+.font-color-grey {
+  color: #475569;
+}
+.font-color-blue {
+  color: #3392ff;
 }
 .tab-button-background {
   background-color: transparent;
@@ -127,4 +161,16 @@
 .failureView {
   width: 150px;
   height: 100px;
+}
+.Side-bar-container {
+  background-color: #ffffff;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 20px;
+}
+.side-bar-head {
+  font-family: 'Roboto';
+  font-size: 13px;
+  color: #334155;
+  font-weight: 600;
 }
