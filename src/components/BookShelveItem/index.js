@@ -14,12 +14,12 @@ const BookShelveItem = props => {
         <div className="detailsContainer">
           <h1 className="bookTitle">{title}</h1>
           <p className="authorName">{authorName}</p>
-          <p className="rating">
+          <p className="ratingOfItem">
             Avg Rating
             <BsFillStarFill className="starIcon" />
             {rating}
           </p>
-          <p className="status">
+          <p className="statusOfItem">
             Status : <span className="statusData">{readStatus}</span>
           </p>
         </div>

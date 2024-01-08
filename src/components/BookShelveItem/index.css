@@ -29,7 +29,7 @@
   text-align: left;
   color: #475569;
 }
-.rating {
+.ratingOfItem {
   font-family: 'Roboto';
   font-size: 12px;
   font-weight: 500;
@@ -44,7 +44,7 @@
   margin-left: 4px;
   margin-right: 4px;
 }
-.status {
+.statusOfItem {
   font-family: 'Roboto';
   font-size: 12px;
   font-weight: 500;

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   margin-right: 10px;
+  justify-content: center;
 }
 .BookImage {
   height: 160px;
@@ -13,12 +14,12 @@
     width: 330px;
   }
 }
-.title {
+.titleOfBook {
   font-family: 'Roboto';
   font-size: 16px;
   text-align: center;
 }
-.authorName {
+.authorNameOfBook {
   font-family: 'Roboto';
   font-size: 10px;
   text-align: center;

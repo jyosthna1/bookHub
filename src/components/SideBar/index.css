@@ -1,0 +1,11 @@
+.sideBarContainer {
+  background-color: #ffffff;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.sideBarHead {
+  font-family: 'Roboto';
+  font-size: 20px;
+  font-weight: 500;
+  color: #334155;
+}

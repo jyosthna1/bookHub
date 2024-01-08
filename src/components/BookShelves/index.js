@@ -1,27 +1,32 @@
 import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
+import {Link} from 'react-router-dom'
 import Cookie from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import './index.css'
 import Header from '../Header'
 import BookShelveItem from '../BookShelveItem'
 
-const bookShelvesTabs = [
+const bookshelvesList = [
   {
-    id: 'ALL',
-    displayText: 'All',
+    id: '22526c8e-680e-4419-a041-b05cc239ece4',
+    value: 'ALL',
+    label: 'All',
   },
   {
-    id: 'READ',
-    displayText: 'Read',
+    id: '37e09397-fab2-46f4-9b9a-66b2324b2e22',
+    value: 'READ',
+    label: 'Read',
   },
   {
-    id: 'CURRENTLY_READING',
-    displayText: 'Currently Reading',
+    id: '2ab42512-3d05-4fba-8191-5122175b154e',
+    value: 'CURRENTLY_READING',
+    label: 'Currently Reading',
   },
   {
-    id: 'WANT_TO_READ',
-    displayText: 'Want To Read',
+    id: '361d5fd4-9ea1-4e0c-bd47-da2682a5b7c8',
+    value: 'WANT_TO_READ',
+    label: 'Want to Read',
   },
 ]
 
@@ -34,20 +39,20 @@ const apiStatusConstants = {
 
 const TabItem = props => {
   const {tabDetails, activeTabCurrent, onClickTab} = props
-  const {displayText, id} = tabDetails
+  const {label, value, id} = tabDetails
 
   const activeTabClassName = activeTabCurrent
     ? 'tab-button-background-blue'
     : 'tab-button-background'
 
   const onClickTabValue = () => {
-    onClickTab(id)
+    onClickTab(value)
   }
 
   return (
-    <li key={id} onClick={onClickTabValue}>
+    <li key={value} onClick={onClickTabValue}>
       <button type="button" className={`tab-button ${activeTabClassName}`}>
-        {displayText}
+        {label}
       </button>
     </li>
   )
@@ -55,7 +60,7 @@ const TabItem = props => {
 
 class BookShelves extends Component {
   state = {
-    activeTab: bookShelvesTabs[0].id,
+    activeTab: bookshelvesList[0].value,
     apiStatus: apiStatusConstants.initial,
     bookShelvesArray: [],
     searchInput: '',
@@ -97,7 +102,7 @@ class BookShelves extends Component {
   }
 
   onClickTab = value => {
-    this.setState({activeTab: value})
+    this.setState({activeTab: value}, this.getBookShelvesData)
   }
 
   onChangeSearch = event => {
@@ -124,9 +129,11 @@ class BookShelves extends Component {
         className="failureView"
       />
       <h1 className="failure-head">Something went wrong, Please try again.</h1>
-      <button className="failure-button" type="button">
-        Try Again
-      </button>
+      <Link to="/shelf">
+        <button className="failure-button" type="button">
+          Try Again
+        </button>
+      </Link>
     </div>
   )
 
@@ -177,7 +184,7 @@ class BookShelves extends Component {
   }
 
   render() {
-    const {activeTab, searchInput, bookShelvesArray} = this.state
+    const {activeTab, searchInput} = this.state
 
     return (
       <div className="book-shelves-container">
@@ -202,11 +209,11 @@ class BookShelves extends Component {
           </div>
           <h1 className="bookShelvesHead">Bookshelves</h1>
           <ul className="bookshelves-tabs-container">
-            {bookShelvesTabs.map(eachTabItem => (
+            {bookshelvesList.map(eachTabItem => (
               <TabItem
                 id={eachTabItem.id}
                 tabDetails={eachTabItem}
-                activeTabCurrent={activeTab === eachTabItem.id}
+                activeTabCurrent={activeTab === eachTabItem.value}
                 onClickTab={this.onClickTab}
               />
             ))}
