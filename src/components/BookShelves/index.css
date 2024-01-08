@@ -5,7 +5,22 @@
 .book-shelves-small-devices {
   padding-left: 35px;
   padding-top: 30px;
+  padding-right: 35px;
+}
+@media screen and (min-width: 768px) {
+  .book-shelves-small-devices {
+    display: none;
+  }
+}
+.book-shelves-large-devices {
+  padding-left: 50px;
+  padding-top: 30px;
   padding-right: 50px;
+}
+@media screen and (max-width: 767px) {
+  .book-shelves-large-devices {
+    display: none;
+  }
 }
 .search-container {
   display: flex;

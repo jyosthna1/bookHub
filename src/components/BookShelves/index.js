@@ -220,6 +220,7 @@ class BookShelves extends Component {
           </ul>
           {this.apiStatusSwitch()}
         </div>
+        <div className="book-shelves-large-devices">Hi</div>
       </div>
     )
   }
