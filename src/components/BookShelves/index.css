@@ -1,6 +1,5 @@
 .book-shelves-container {
   background-color: #f8fafc;
-  height: 100vh;
 }
 .book-shelves-small-devices {
   padding-left: 35px;
@@ -129,12 +128,14 @@
   color: #ffffff;
 }
 .BookShelveItem-unorder {
+  display: flex;
+  flex-direction: column;
   padding: 0px;
 }
 @media screen and (min-width: 768px) {
   .BookShelveItem-unorder {
     display: flex;
-
+    flex-direction: row;
     flex-wrap: wrap;
   }
 }

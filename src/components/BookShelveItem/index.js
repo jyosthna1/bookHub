@@ -9,7 +9,7 @@ const BookShelveItem = props => {
 
   return (
     <Link to={`/books/${id}`} className="link">
-      <li className="bookShelveListContainer">
+      <li className="bookShelveListContainerItems">
         <img src={coverPic} className="cover-pic" alt={title} />
         <div className="detailsContainer">
           <h1 className="bookTitle">{title}</h1>

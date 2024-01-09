@@ -33,12 +33,14 @@ class Header extends Component {
             />
           </Link>
           <div className="page-icons-container">
-            <Link to="/" className="link-style">
-              <p className="pageName">Home</p>
-            </Link>
-            <Link to="/shelf" className="link-style">
-              <p className="pageName">Bookshelves</p>
-            </Link>
+            <ul>
+              <Link to="/" className="link-style">
+                <li className="pageName">Home</li>
+              </Link>
+              <Link to="/shelf" className="link-style">
+                <li className="pageName">Bookshelves</li>
+              </Link>
+            </ul>
             <button type="button" className="logoutButton">
               Logout
             </button>
@@ -47,12 +49,14 @@ class Header extends Component {
         </div>
         {smallDevicesMenu && (
           <div className="smallDevicesItems">
-            <Link to="/" className="link-style">
-              <p className="pageName">Home</p>
-            </Link>
-            <Link to="/shelf" className="link-style">
-              <p className="pageName">Bookshelves</p>
-            </Link>
+            <ul>
+              <Link to="/" className="link-style">
+                <li className="pageName">Home</li>
+              </Link>
+              <Link to="/shelf" className="link-style">
+                <li className="pageName">Bookshelves</li>
+              </Link>
+            </ul>
             <button type="button" className="logoutButton">
               Logout
             </button>
