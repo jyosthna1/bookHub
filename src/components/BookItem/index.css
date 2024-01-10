@@ -25,3 +25,7 @@
   text-align: center;
   margin: 0px;
 }
+.link-style-item-home {
+  list-style-type: none;
+  text-decoration: none;
+}
