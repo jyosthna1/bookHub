@@ -6,6 +6,7 @@ import Loader from 'react-loader-spinner'
 import './index.css'
 import Header from '../Header'
 import BookShelveItem from '../BookShelveItem'
+import Footer from '../Footer'
 
 const bookshelvesList = [
   {
@@ -132,7 +133,7 @@ class BookShelves extends Component {
         alt="failure view"
         className="failureView"
       />
-      <h1 className="failure-head">Something went wrong, Please try again.</h1>
+      <h1 className="failure-head">Something went wrong. Please try again.</h1>
       <Link to="/shelf">
         <button className="failure-button" type="button">
           Try Again
@@ -189,6 +190,9 @@ class BookShelves extends Component {
 
   render() {
     const {activeTab, searchInput} = this.state
+    const activeTabDetails = bookshelvesList.find(
+      eachTabValue => activeTab === eachTabValue.value,
+    )
 
     return (
       <div className="book-shelves-container">
@@ -240,7 +244,7 @@ class BookShelves extends Component {
           </div>
           <div className="search-and-items-container">
             <div className="search-and-head-container">
-              <h1 className="AllBooksHead">All Books</h1>
+              <h1 className="AllBooksHead">{activeTabDetails.label} Books</h1>
               <div className="search-container-large">
                 <input
                   type="search"
@@ -262,6 +266,7 @@ class BookShelves extends Component {
             {this.apiStatusSwitch()}
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

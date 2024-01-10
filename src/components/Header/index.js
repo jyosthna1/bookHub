@@ -23,50 +23,52 @@ class Header extends Component {
   render() {
     const {smallDevicesMenu} = this.state
     return (
-      <div className="header-page">
-        <div className="header-container">
-          <Link to="/" className="link-style">
-            <img
-              src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
-              alt="website logo"
-              className="website-logo"
-            />
-          </Link>
-          <div className="page-icons-container">
-            <ul>
-              <Link to="/" className="link-style">
-                <li className="pageName">Home</li>
-              </Link>
-              <Link to="/shelf" className="link-style">
-                <li className="pageName">Bookshelves</li>
-              </Link>
-            </ul>
-            <button type="button" className="logoutButton">
-              Logout
-            </button>
+      <nav>
+        <div className="header-page">
+          <div className="header-container">
+            <Link to="/" className="link-style">
+              <img
+                src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
+                alt="website logo"
+                className="website-logo"
+              />
+            </Link>
+            <div className="page-icons-container">
+              <ul className="header-un-order-list">
+                <Link to="/" className="link-style">
+                  <li className="pageName">Home</li>
+                </Link>
+                <Link to="/shelf" className="link-style">
+                  <li className="pageName">Bookshelves</li>
+                </Link>
+              </ul>
+              <button type="button" className="logoutButton">
+                Logout
+              </button>
+            </div>
+            <HiMenu className="menuIcon" onClick={this.onClickChangeMenu} />
           </div>
-          <HiMenu className="menuIcon" onClick={this.onClickChangeMenu} />
+          {smallDevicesMenu && (
+            <div className="smallDevicesItems">
+              <ul className="header-un-order-list">
+                <Link to="/" className="link-style">
+                  <li className="pageName">Home</li>
+                </Link>
+                <Link to="/shelf" className="link-style">
+                  <li className="pageName">Bookshelves</li>
+                </Link>
+              </ul>
+              <button type="button" className="logoutButton">
+                Logout
+              </button>
+              <IoIosCloseCircle
+                className="closeIcon"
+                onClick={this.onClickCloseMenu}
+              />
+            </div>
+          )}
         </div>
-        {smallDevicesMenu && (
-          <div className="smallDevicesItems">
-            <ul>
-              <Link to="/" className="link-style">
-                <li className="pageName">Home</li>
-              </Link>
-              <Link to="/shelf" className="link-style">
-                <li className="pageName">Bookshelves</li>
-              </Link>
-            </ul>
-            <button type="button" className="logoutButton">
-              Logout
-            </button>
-            <IoIosCloseCircle
-              className="closeIcon"
-              onClick={this.onClickCloseMenu}
-            />
-          </div>
-        )}
-      </div>
+      </nav>
     )
   }
 }

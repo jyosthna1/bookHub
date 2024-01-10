@@ -103,6 +103,7 @@
 @media screen and (min-width: 768px) {
   .tab-button-large {
     display: flex;
+    align-items: flex-start;
     border-width: 0px;
     background-color: transparent;
     font-family: 'Roboto';

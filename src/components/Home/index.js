@@ -140,7 +140,7 @@ class Home extends Component {
         </div>
         <div className="slider-container">
           <div className="header-button-container">
-            <h1 className="slider-head">Top Related Books</h1>
+            <h1 className="slider-head">Top Rated Books</h1>
             <Link to="/shelf" className="link-style">
               <button className="find-button-large" type="button">
                 Find Books

@@ -4,7 +4,7 @@
 }
 @media screen and (min-width: 768px) {
   .bookShelveListContainerItems {
-    width: 200%;
+    width: 500px;
   }
 }
 .detailsContainer {
