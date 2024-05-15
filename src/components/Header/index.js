@@ -20,6 +20,12 @@ class Header extends Component {
     })
   }
 
+  onClickLogOut = () => {
+    const {history} = this.props
+    Cookie.remove('jwt_token')
+    history.replace('/login')
+  }
+
   render() {
     const {smallDevicesMenu} = this.state
     return (
@@ -42,7 +48,11 @@ class Header extends Component {
                   <li className="pageName">Bookshelves</li>
                 </Link>
               </ul>
-              <button type="button" className="logoutButton">
+              <button
+                type="button"
+                className="logoutButton"
+                onClick={this.onClickLogOut}
+              >
                 Logout
               </button>
             </div>
@@ -58,7 +68,11 @@ class Header extends Component {
                   <li className="pageName">Bookshelves</li>
                 </Link>
               </ul>
-              <button type="button" className="logoutButton">
+              <button
+                type="button"
+                className="logoutButton"
+                onClick={this.onClickLogOut}
+              >
                 Logout
               </button>
               <IoIosCloseCircle

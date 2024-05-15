@@ -6,6 +6,7 @@ import Loader from 'react-loader-spinner'
 import './index.css'
 import Header from '../Header'
 import BookShelveItem from '../BookShelveItem'
+import TabItem from '../TabItem'
 import Footer from '../Footer'
 
 const bookshelvesList = [
@@ -36,31 +37,6 @@ const apiStatusConstants = {
   success: 'SUCCESS',
   failure: 'FAILURE',
   inProgress: 'IN_PROGRESS',
-}
-
-const TabItem = props => {
-  const {tabDetails, activeTabCurrent, onClickTab} = props
-  const {label, value, id} = tabDetails
-
-  const activeTabClassName = activeTabCurrent
-    ? 'tab-button-background-blue'
-    : 'tab-button-background'
-  const fontColor = activeTabCurrent ? 'font-color-blue' : 'font-color-grey'
-
-  const onClickTabValue = () => {
-    onClickTab(value)
-  }
-
-  return (
-    <li key={value} onClick={onClickTabValue}>
-      <button type="button" className={`tab-button ${activeTabClassName}`}>
-        {label}
-      </button>
-      <button type="button" className={`tab-button-large ${fontColor}`}>
-        {label}
-      </button>
-    </li>
-  )
 }
 
 class BookShelves extends Component {
@@ -111,13 +87,11 @@ class BookShelves extends Component {
   }
 
   onChangeSearch = event => {
-    this.setState({searchInput: event.target.value}, this.getBookShelvesData)
+    this.setState({searchInput: event.target.value})
   }
 
-  onKeyDownEnter = event => {
-    if (event.key === 'Enter') {
-      this.getBookShelvesData()
-    }
+  onKeyDownEnter = () => {
+    this.getBookShelvesData()
   }
 
   renderLoadingView = () => (
@@ -205,12 +179,12 @@ class BookShelves extends Component {
               placeholder="search"
               onChange={this.onChangeSearch}
               value={searchInput}
-              onKeyDown={this.onKeyDownEnter}
             />
             <button
               type="button"
               testid="searchButton"
               className="searchButton"
+              onClick={this.onKeyDownEnter}
             >
               <BsSearch className="searchIcon" />
             </button>
@@ -219,10 +193,10 @@ class BookShelves extends Component {
           <ul className="bookshelves-tabs-container">
             {bookshelvesList.map(eachTabItem => (
               <TabItem
-                id={eachTabItem.id}
+                key={eachTabItem.id}
                 tabDetails={eachTabItem}
                 activeTabCurrent={activeTab === eachTabItem.value}
-                onClickTab={this.onClickTab}
+                onClick={this.onClickTab}
               />
             ))}
           </ul>
@@ -234,10 +208,10 @@ class BookShelves extends Component {
             <ul className="bookshelves-tabs-container">
               {bookshelvesList.map(eachTabItem => (
                 <TabItem
-                  id={eachTabItem.id}
+                  key={eachTabItem.id}
                   tabDetails={eachTabItem}
                   activeTabCurrent={activeTab === eachTabItem.value}
-                  onClickTab={this.onClickTab}
+                  onClick={this.onClickTab}
                 />
               ))}
             </ul>
@@ -252,12 +226,12 @@ class BookShelves extends Component {
                   placeholder="search"
                   onChange={this.onChangeSearch}
                   value={searchInput}
-                  onKeyDown={this.onKeyDownEnter}
                 />
                 <button
                   type="button"
                   testid="searchButton"
                   className="searchButtonLarge"
+                  onClick={this.onKeyDownEnter}
                 >
                   <BsSearch className="searchIcon" />
                 </button>

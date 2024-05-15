@@ -75,9 +75,7 @@ class BookDetails extends Component {
           alt="failure view"
           className="failureView"
         />
-        <h1 className="failure-head">
-          Something went wrong, Please try again.
-        </h1>
+        <p className="failure-head">Something went wrong. Please try again</p>
         <Link to={`/books/${id}`}>
           <button className="failure-button" type="button">
             Try Again
