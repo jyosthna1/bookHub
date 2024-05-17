@@ -107,7 +107,7 @@ class BookShelves extends Component {
         alt="failure view"
         className="failureView"
       />
-      <h1 className="failure-head">Something went wrong. Please try again.</h1>
+      <p className="failure-head">Something went wrong. Please try again</p>
       <Link to="/shelf">
         <button className="failure-button" type="button">
           Try Again
@@ -117,7 +117,7 @@ class BookShelves extends Component {
   )
 
   renderSuccessView = () => {
-    const {bookShelvesArray} = this.state
+    const {bookShelvesArray, searchInput} = this.state
     const bookShelvesArrayLength = bookShelvesArray.length === 0
 
     return (
@@ -130,7 +130,7 @@ class BookShelves extends Component {
               className="noBooksImage"
             />
             <h1 className="not-found-head">
-              Your search for dsadsdsad did not find any matches.
+              Your search for {searchInput} did not find any matches.
             </h1>
           </div>
         ) : (

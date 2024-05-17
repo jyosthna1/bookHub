@@ -67,7 +67,7 @@ class Home extends Component {
         alt="failure view"
         className="failureView"
       />
-      <h1 className="failure-head">Something went wrong, Please try again.</h1>
+      <p className="failure-head">Something went wrong. Please try again</p>
       <Link to="/" className="link-style">
         <button className="failure-button" type="button">
           Try Again
@@ -134,9 +134,11 @@ class Home extends Component {
             enjoyed in the past, and we will give you surprisingly insightful
             recommendations.
           </p>
-          <button className="find-button" type="button">
-            Find Books
-          </button>
+          <Link to="/shelf" className="link-style">
+            <button className="find-button" type="button">
+              Find Books
+            </button>
+          </Link>
         </div>
         <div className="slider-container">
           <div className="header-button-container">

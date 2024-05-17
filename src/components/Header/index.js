@@ -2,7 +2,7 @@ import {HiMenu} from 'react-icons/hi'
 import {IoIosCloseCircle} from 'react-icons/io'
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
 import './index.css'
 
 class Header extends Component {
@@ -22,7 +22,7 @@ class Header extends Component {
 
   onClickLogOut = () => {
     const {history} = this.props
-    Cookie.remove('jwt_token')
+    Cookies.remove('jwt_token')
     history.replace('/login')
   }
 

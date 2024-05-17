@@ -66,8 +66,11 @@ class BookDetails extends Component {
     </div>
   )
 
-  renderFailureView = bookDetailsData => {
-    const {id} = bookDetailsData
+  renderFailureView = () => {
+    const {match} = this.props
+    const {params} = match
+    const {id} = params
+    console.log(id)
     return (
       <div className="failure-container">
         <img
@@ -111,7 +114,7 @@ class BookDetails extends Component {
                 {rating}
               </p>
               <p className="status">
-                Status:<span className="statusData">{readStatus}</span>
+                Status : <span className="statusData">{readStatus}</span>
               </p>
             </div>
           </div>
@@ -127,13 +130,13 @@ class BookDetails extends Component {
   }
 
   bookDetailsPage = () => {
-    const {apiStatus, bookDetailsData} = this.state
+    const {apiStatus} = this.state
 
     switch (apiStatus) {
       case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       case apiStatusConstants.failure:
-        return this.renderFailureView(bookDetailsData)
+        return this.renderFailureView()
       case apiStatusConstants.success:
         return this.renderBookDetailsPage()
       default:
