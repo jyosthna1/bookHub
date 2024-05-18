@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import Loader from 'react-loader-spinner'
 import {Component} from 'react'
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
 import './index.css'
 import Header from '../Header'
 import BookItem from '../BookItem'
@@ -27,7 +27,7 @@ class Home extends Component {
   getTopRelatedBooks = async () => {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const url = 'https://apis.ccbp.in/book-hub/top-rated-books'
-    const jwtToken = Cookie.get('jwt_token')
+    const jwtToken = Cookies.get('jwt_token')
 
     const options = {
       headers: {

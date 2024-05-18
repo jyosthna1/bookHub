@@ -80,6 +80,7 @@
 @media screen and (min-width: 768px) {
   .bookshelves-tabs-container {
     flex-direction: column;
+    align-items: flex-start;
   }
 }
 .tab-button {
@@ -197,6 +198,7 @@
   padding-left: 30px;
   padding-right: 30px;
   padding-top: 20px;
+  width: 160px;
 }
 .side-bar-head {
   font-family: 'Roboto';
@@ -207,8 +209,6 @@
 .search-and-head-container {
   display: flex;
   justify-content: space-between;
-
-  flex-grow: 1;
 }
 .AllBooksHead {
   font-family: 'Roboto';
@@ -219,6 +219,6 @@
 .search-and-items-container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+
   margin-left: 20px;
 }

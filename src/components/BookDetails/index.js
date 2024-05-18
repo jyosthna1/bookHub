@@ -1,5 +1,5 @@
 import './index.css'
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
 import {Link} from 'react-router-dom'
 import {BsFillStarFill} from 'react-icons/bs'
 import Loader from 'react-loader-spinner'
@@ -39,7 +39,7 @@ class BookDetails extends Component {
     const {id} = params
 
     const url = `https://apis.ccbp.in/book-hub/books/${id}`
-    const jwtToken = Cookie.get('jwt_token')
+    const jwtToken = Cookies.get('jwt_token')
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,

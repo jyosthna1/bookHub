@@ -7,7 +7,7 @@
 }
 .footer-container {
   display: flex;
-  list-style-ttpe:none;
+  list-style-type: none;
 }
 .google-button {
   background-color: transparent;

@@ -1,7 +1,7 @@
 import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
 import {Link} from 'react-router-dom'
-import Cookie from 'js-cookie'
+import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import './index.css'
 import Header from '../Header'
@@ -55,7 +55,7 @@ class BookShelves extends Component {
     this.setState({apiStatus: apiStatusConstants.inProgress})
     const {searchInput, activeTab} = this.state
     const url = `https://apis.ccbp.in/book-hub/books?shelf=${activeTab}&search=${searchInput}`
-    const jwtToken = Cookie.get('jwt_token')
+    const jwtToken = Cookies.get('jwt_token')
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -196,7 +196,7 @@ class BookShelves extends Component {
                 key={eachTabItem.id}
                 tabDetails={eachTabItem}
                 activeTabCurrent={activeTab === eachTabItem.value}
-                onClick={this.onClickTab}
+                onClickTab={this.onClickTab}
               />
             ))}
           </ul>
@@ -211,7 +211,7 @@ class BookShelves extends Component {
                   key={eachTabItem.id}
                   tabDetails={eachTabItem}
                   activeTabCurrent={activeTab === eachTabItem.value}
-                  onClick={this.onClickTab}
+                  onClickTab={this.onClickTab}
                 />
               ))}
             </ul>
