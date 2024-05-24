@@ -1,13 +1,7 @@
-import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
-import {Link} from 'react-router-dom'
-import Cookies from 'js-cookie'
-import Loader from 'react-loader-spinner'
-import './index.css'
+import {Component} from 'react'
 import Header from '../Header'
-import BookShelveItem from '../BookShelveItem'
-import TabItem from '../TabItem'
-import Footer from '../Footer'
+import './index.css'
 
 const bookshelvesList = [
   {
@@ -40,207 +34,35 @@ const apiStatusConstants = {
 }
 
 class BookShelves extends Component {
-  state = {
-    activeTab: bookshelvesList[0].value,
-    apiStatus: apiStatusConstants.initial,
-    bookShelvesArray: [],
-    searchInput: '',
-  }
+  state = {apiStatus: apiStatusConstants.initial, searchInput: ''}
 
-  componentDidMount() {
-    this.getBookShelvesData()
-  }
-
-  getBookShelvesData = async () => {
-    this.setState({apiStatus: apiStatusConstants.inProgress})
-    const {searchInput, activeTab} = this.state
-    const url = `https://apis.ccbp.in/book-hub/books?shelf=${activeTab}&search=${searchInput}`
-    const jwtToken = Cookies.get('jwt_token')
-    const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      method: 'GET',
-    }
-    const response = await fetch(url, options)
-    if (response.ok === true) {
-      const data = await response.json()
-      const bookData = data.books.map(eachBookData => ({
-        authorName: eachBookData.author_name,
-        coverPic: eachBookData.cover_pic,
-        id: eachBookData.id,
-        rating: eachBookData.rating,
-        readStatus: eachBookData.read_status,
-        title: eachBookData.title,
-      }))
-      this.setState({
-        bookShelvesArray: bookData,
-        apiStatus: apiStatusConstants.success,
-      })
-    } else {
-      this.setState({apiStatus: apiStatusConstants.failure})
-    }
-  }
-
-  onClickTab = value => {
-    this.setState({activeTab: value}, this.getBookShelvesData)
-  }
-
-  onChangeSearch = event => {
+  onChangeSearchInput = event => {
     this.setState({searchInput: event.target.value})
   }
 
-  onKeyDownEnter = () => {
-    this.getBookShelvesData()
-  }
-
-  renderLoadingView = () => (
-    <div className="loader-container" testid="loader">
-      <Loader type="TailSpin" color="blue" height="50" width="50" />
-    </div>
-  )
-
-  renderFailureView = () => (
-    <div className="failure-container">
-      <img
-        src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704263013/Group_7522_sbjwvs.png"
-        alt="failure view"
-        className="failureView"
-      />
-      <p className="failure-head">Something went wrong. Please try again</p>
-      <Link to="/shelf">
-        <button className="failure-button" type="button">
-          Try Again
-        </button>
-      </Link>
-    </div>
-  )
-
-  renderSuccessView = () => {
-    const {bookShelvesArray, searchInput} = this.state
-    const bookShelvesArrayLength = bookShelvesArray.length === 0
-
+  renderSearchInput = () => {
+    const {searchInput} = this.state
     return (
-      <>
-        {bookShelvesArrayLength ? (
-          <div className="not-found-container">
-            <img
-              src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704451139/Group_aegii4.png"
-              alt="no books"
-              className="noBooksImage"
-            />
-            <h1 className="not-found-head">
-              Your search for {searchInput} did not find any matches.
-            </h1>
-          </div>
-        ) : (
-          <ul className="BookShelveItem-unorder">
-            {bookShelvesArray.map(eachShelveItem => (
-              <BookShelveItem
-                details={eachShelveItem}
-                key={eachShelveItem.id}
-              />
-            ))}
-          </ul>
-        )}
-      </>
+      <div className="search-input-container">
+        <input
+          type="search"
+          value={searchInput}
+          className="search"
+          placeholder="Search"
+          onChange={this.onChangeSearchInput}
+        />
+        <BsSearch className="search-icon" />
+      </div>
     )
-  }
-
-  apiStatusSwitch = () => {
-    const {apiStatus} = this.state
-
-    switch (apiStatus) {
-      case apiStatusConstants.inProgress:
-        return this.renderLoadingView()
-      case apiStatusConstants.failure:
-        return this.renderFailureView()
-      case apiStatusConstants.success:
-        return this.renderSuccessView()
-      default:
-        return null
-    }
   }
 
   render() {
-    const {activeTab, searchInput} = this.state
-    const activeTabDetails = bookshelvesList.find(
-      eachTabValue => activeTab === eachTabValue.value,
-    )
-
     return (
-      <div className="book-shelves-container">
+      <div className="bookshelves-container">
         <Header />
-        <div className="book-shelves-small-devices">
-          <div className="search-container">
-            <input
-              type="search"
-              className="search"
-              placeholder="search"
-              onChange={this.onChangeSearch}
-              value={searchInput}
-            />
-            <button
-              type="button"
-              testid="searchButton"
-              className="searchButton"
-              onClick={this.onKeyDownEnter}
-            >
-              <BsSearch className="searchIcon" />
-            </button>
-          </div>
-          <h1 className="bookShelvesHead">Bookshelves</h1>
-          <ul className="bookshelves-tabs-container">
-            {bookshelvesList.map(eachTabItem => (
-              <TabItem
-                key={eachTabItem.id}
-                tabDetails={eachTabItem}
-                activeTabCurrent={activeTab === eachTabItem.value}
-                onClickTab={this.onClickTab}
-              />
-            ))}
-          </ul>
-          {this.apiStatusSwitch()}
+        <div className="bookshelves-category-list">
+          {this.renderSearchInput()}
         </div>
-        <div className="book-shelves-large-devices">
-          <div className="Side-bar-container">
-            <h1 className="side-bar-head">Bookshelves</h1>
-            <ul className="bookshelves-tabs-container">
-              {bookshelvesList.map(eachTabItem => (
-                <TabItem
-                  key={eachTabItem.id}
-                  tabDetails={eachTabItem}
-                  activeTabCurrent={activeTab === eachTabItem.value}
-                  onClickTab={this.onClickTab}
-                />
-              ))}
-            </ul>
-          </div>
-          <div className="search-and-items-container">
-            <div className="search-and-head-container">
-              <h1 className="AllBooksHead">{activeTabDetails.label} Books</h1>
-              <div className="search-container-large">
-                <input
-                  type="search"
-                  className="searchLarge"
-                  placeholder="search"
-                  onChange={this.onChangeSearch}
-                  value={searchInput}
-                />
-                <button
-                  type="button"
-                  testid="searchButton"
-                  className="searchButtonLarge"
-                  onClick={this.onKeyDownEnter}
-                >
-                  <BsSearch className="searchIcon" />
-                </button>
-              </div>
-            </div>
-            {this.apiStatusSwitch()}
-          </div>
-        </div>
-        <Footer />
       </div>
     )
   }
