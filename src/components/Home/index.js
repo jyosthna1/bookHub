@@ -83,22 +83,11 @@ class Home extends Component {
       slidesToScroll: 1,
       slidesToShow: 4,
     }
-    const settings1 = {
-      dots: false,
-      slidesToScroll: 1,
-      slidesToShow: 2,
-    }
+
     return (
       <>
         <div className="slider-large-devices">
           <Slider {...settings}>
-            {topRelatedBooks.map(eachBook => (
-              <BookItem key={eachBook.id} details={eachBook} />
-            ))}
-          </Slider>
-        </div>
-        <div className="slider-small-devices">
-          <Slider {...settings1}>
             {topRelatedBooks.map(eachBook => (
               <BookItem key={eachBook.id} details={eachBook} />
             ))}

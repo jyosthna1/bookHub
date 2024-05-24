@@ -114,7 +114,7 @@ class BookDetails extends Component {
                 {rating}
               </p>
               <p className="status">
-                Status : <span className="statusData">{readStatus}</span>
+                Status: <span className="statusData">{readStatus}</span>
               </p>
             </div>
           </div>

@@ -119,17 +119,7 @@
   width: 150px;
   height: 100px;
 }
-@media screen and (max-width: 767px) {
-  .slider-large-devices {
-    display: none;
-  }
-}
 
-@media screen and (min-width: 768px) {
-  .slider-small-devices {
-    display: none;
-  }
-}
 .link-style {
   text-decoration: none;
   cursor: pointer;

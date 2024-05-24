@@ -21,7 +21,7 @@ const BookShelveItem = props => {
           </div>
 
           <p className="statusOfItem">
-            Status : <span className="statusData">{readStatus}</span>
+            Status: <span className="statusData">{readStatus}</span>
           </p>
         </div>
       </li>

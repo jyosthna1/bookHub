@@ -54,9 +54,45 @@ class Login extends Component {
       <div className="login-form">
         <img
           src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1703999381/Rectangle_1467_sgtzoo.png"
-          alt="login website logo"
+          alt="website login"
           className="loginWebsiteLogo"
         />
+
+        <form className="form-container" onSubmit={this.onSubmitUserDetails}>
+          <img
+            src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
+            alt="login website logo"
+            className="website-logo-login"
+          />
+          <div className="user-details">
+            <label htmlFor="username" className="username-label">
+              Username*
+            </label>
+            <input
+              id="username"
+              type="text"
+              className="username-input"
+              value={username}
+              onChange={this.onChangeUsername}
+            />
+          </div>
+          <div className="user-details">
+            <label htmlFor="password" className="username-label">
+              Password*
+            </label>
+            <input
+              id="password"
+              type="password"
+              className="username-input"
+              value={password}
+              onChange={this.onChangePassword}
+            />
+          </div>
+          {showSubmitError && <p className="error-message">{errorMsg}</p>}
+          <button type="submit" className="login-button">
+            Login
+          </button>
+        </form>
       </div>
     )
   }

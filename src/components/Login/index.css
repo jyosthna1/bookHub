@@ -27,3 +27,70 @@
     border-radius: 0px;
   }
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px;
+}
+@media screen and (min-width: 767px) {
+  .form-container {
+    width: 350px;
+    flex-shrink: 0;
+    box-shadow: 0px 8px 40px rgba(7, 7, 7, 0.08);
+    padding: 64px 48px 64px 48px;
+    background-color: #ffffff;
+    margin-right: 20px;
+  }
+}
+.website-logo-login {
+  height: 40px;
+  width: 120px;
+  margin-bottom: 20px;
+  align-self: center;
+}
+.user-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.username-label {
+  color: #5a7184;
+  font-family: 'Roboto';
+  font-size: 13px;
+  font-weight: 600;
+  padding-bottom: 7px;
+}
+@media screen and (min-width: 767px) {
+  .username-label {
+    font-size: 15px;
+  }
+}
+.username-input {
+  font-family: 'Roboto';
+  font-size: 13px;
+  padding: 2px 6px 2px 6px;
+  outline: none;
+}
+.login-button {
+  background-color: #0284c7;
+  color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 13px;
+  font-weight: 600;
+  border-width: 0px;
+  margin-top: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.error-message {
+  font-family: 'Roboto';
+  font-size: 10px;
+  color: #ef4444;
+}

@@ -9,15 +9,9 @@ class Header extends Component {
   state = {smallDevicesMenu: false}
 
   onClickChangeMenu = () => {
-    this.setState({
-      smallDevicesMenu: true,
-    })
-  }
-
-  onClickCloseMenu = () => {
-    this.setState({
-      smallDevicesMenu: false,
-    })
+    this.setState(prevState => ({
+      smallDevicesMenu: !prevState.smallDevicesMenu,
+    }))
   }
 
   onClickLogOut = () => {
@@ -77,7 +71,7 @@ class Header extends Component {
               </button>
               <IoIosCloseCircle
                 className="closeIcon"
-                onClick={this.onClickCloseMenu}
+                onClick={this.onClickChangeMenu}
               />
             </div>
           )}
