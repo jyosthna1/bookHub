@@ -1,6 +1,7 @@
 import {BsSearch} from 'react-icons/bs'
 import {Component} from 'react'
 import Header from '../Header'
+import TabItem from '../TabItem'
 import './index.css'
 
 const bookshelvesList = [
@@ -34,7 +35,11 @@ const apiStatusConstants = {
 }
 
 class BookShelves extends Component {
-  state = {apiStatus: apiStatusConstants.initial, searchInput: ''}
+  state = {
+    apiStatus: apiStatusConstants.initial,
+    searchInput: '',
+    activeTab: bookshelvesList[0].value,
+  }
 
   onChangeSearchInput = event => {
     this.setState({searchInput: event.target.value})
@@ -56,12 +61,37 @@ class BookShelves extends Component {
     )
   }
 
+  onClickTab = value => {
+    this.setState({activeTab: value})
+  }
+
+  renderTabList = () => {
+    const {activeTab} = this.state
+
+    return (
+      <ul className="un-order-tab-list">
+        {bookshelvesList.map(eachTab => (
+          <TabItem
+            id={eachTab.id}
+            tabDetails={eachTab}
+            activeTabCurrent={activeTab === eachTab.value}
+            onClickTab={this.onClickTab}
+          />
+        ))}
+      </ul>
+    )
+  }
+
   render() {
     return (
       <div className="bookshelves-container">
         <Header />
         <div className="bookshelves-category-list">
           {this.renderSearchInput()}
+          <div className="tab-items">
+            <h1 className="tab-head">Bookshelves</h1>
+            {this.renderTabList()}
+          </div>
         </div>
       </div>
     )

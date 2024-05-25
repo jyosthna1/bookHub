@@ -1,11 +1,19 @@
 .bookshelves-container {
   display: flex;
   flex-direction: column;
+  background-color: #f8fafc;
 }
 .bookshelves-category-list {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 30px;
+  align-items: left;
+  width: 100%;
+}
+@media screen and (min-width: 767px) {
+  .bookshelves-category-list {
+    flex-direction: row;
+  }
 }
 .search-icon {
   color: #475569;
@@ -20,6 +28,12 @@
   background-color: #f1f5f9;
   border-radius: 8px;
   border: 1px solid #edeff1;
+  width: 100%;
+}
+@media screen and (min-width: 767px) {
+  .search-input-container {
+    order: 0;
+  }
 }
 .search {
   background-color: #ffffff;
@@ -31,4 +45,28 @@
   outline: none;
   flex-grow: 1;
   padding: 10px;
+}
+.tab-head {
+  color: #334155;
+  font-family: 'Roboto';
+  font-size: 22px;
+  font-weight: 500;
+}
+.un-order-tab-list {
+  list-style-type: none;
+  padding: 0px;
+  display: flex;
+}
+@media screen and (min-width: 767px) {
+  .un-order-tab-list {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 767px) {
+  .tab-items {
+    order: -1;
+    background-color: #ffffff;
+    margin-right: 20px;
+    padding: 20px;
+  }
 }

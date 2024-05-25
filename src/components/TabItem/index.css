@@ -1,11 +1,44 @@
-.sideBarContainer {
-  background-color: #ffffff;
-  padding-top: 20px;
-  padding-left: 20px;
+.tab-item {
+  margin-right: 12px;
 }
-.sideBarHead {
+@media screen and (min-width: 767px) {
+  .tab-item {
+    margin-bottom: 12px;
+  }
+}
+.tab-button-background-blue {
+  color: #ffffff;
+  background-color: #0284c7;
+}
+@media screen and (min-width: 767px) {
+  .tab-button-background-blue {
+    background-color: transparent;
+    color: #0284c7;
+  }
+}
+.tab-button-background {
+  background-color: #ffffff;
+  color: #0284c7;
+}
+@media screen and (min-width: 767px) {
+  .tab-button-background {
+    background-color: transparent;
+    color: #475569;
+  }
+}
+.tab-button {
+  border-width: 0px;
   font-family: 'Roboto';
-  font-size: 20px;
+  font-size: 13px;
+  padding: 4px 12px 4px 12px;
+  border: 1px solid #0284c7;
+  border-radius: 12px;
   font-weight: 500;
-  color: #334155;
+  cursor: pointer;
+}
+@media screen and (min-width: 767px) {
+  .tab-button {
+    border: none;
+    padding: 0px;
+  }
 }

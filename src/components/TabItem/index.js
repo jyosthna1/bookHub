@@ -10,16 +10,12 @@ const TabItem = props => {
   const fontColor = activeTabCurrent ? 'font-color-blue' : 'font-color-grey'
 
   const onClickTabValue = () => {
-    console.log(value)
     onClickTab(value)
   }
 
   return (
-    <li key={value} onClick={onClickTabValue}>
+    <li key={value} onClick={onClickTabValue} className="tab-item">
       <button type="button" className={`tab-button ${activeTabClassName}`}>
-        {label}
-      </button>
-      <button type="button" className={`tab-button-large ${fontColor}`}>
         {label}
       </button>
     </li>
