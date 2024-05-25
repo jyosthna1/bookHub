@@ -1,5 +1,6 @@
 .tab-item {
   margin-right: 12px;
+  margin-bottom: 12px;
 }
 @media screen and (min-width: 767px) {
   .tab-item {
@@ -40,5 +41,7 @@
   .tab-button {
     border: none;
     padding: 0px;
+    font-size: 14px;
+    font-weight: 600;
   }
 }

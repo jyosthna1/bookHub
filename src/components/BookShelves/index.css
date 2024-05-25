@@ -2,17 +2,18 @@
   display: flex;
   flex-direction: column;
   background-color: #f8fafc;
+  width: 100vw;
 }
 .bookshelves-category-list {
   display: flex;
   flex-direction: column;
   padding: 30px;
   align-items: left;
-  width: 100%;
 }
 @media screen and (min-width: 767px) {
   .bookshelves-category-list {
     flex-direction: row;
+    padding: 40px;
   }
 }
 .search-icon {
@@ -32,7 +33,8 @@
 }
 @media screen and (min-width: 767px) {
   .search-input-container {
-    order: 0;
+    order: 1;
+    width: 20vw;
   }
 }
 .search {
@@ -52,10 +54,16 @@
   font-size: 22px;
   font-weight: 500;
 }
+@media screen and (min-width: 767px) {
+  .tab-head {
+    font-size: 24px;
+  }
+}
 .un-order-tab-list {
   list-style-type: none;
   padding: 0px;
   display: flex;
+  flex-wrap: wrap;
 }
 @media screen and (min-width: 767px) {
   .un-order-tab-list {
@@ -68,5 +76,50 @@
     background-color: #ffffff;
     margin-right: 20px;
     padding: 20px;
+    width: 20vw;
   }
+}
+.failure-container-book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.failure-head-book {
+  font-family: 'Roboto';
+  font-size: 14px;
+}
+@media screen and (min-width: 767px) {
+  .failure-head-book {
+    font-size: 22px;
+    font-weight: 500;
+  }
+}
+.failure-button-book {
+  font-family: 'Roboto';
+  color: #ffffff;
+  background-color: #3392ff;
+  border-width: 0px;
+  font-size: 11px;
+  padding: 6px 12px 6px 12px;
+  cursor: pointer;
+}
+@media screen and (min-width: 767px) {
+  .failure-button-book {
+    font-size: 17px;
+  }
+}
+.failureView-book {
+  width: 150px;
+  height: 100px;
+}
+@media screen and (min-width: 767px) {
+  .book-details-render-container {
+    order: 0;
+    width: 90vw;
+  }
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

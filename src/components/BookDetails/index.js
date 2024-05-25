@@ -70,7 +70,7 @@ class BookDetails extends Component {
     const {match} = this.props
     const {params} = match
     const {id} = params
-    console.log(id)
+
     return (
       <div className="failure-container">
         <img

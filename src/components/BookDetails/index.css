@@ -133,3 +133,30 @@
   color: #475569;
   margin: 0px;
 }
+.failure-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.failure-head {
+  font-family: 'Roboto';
+  font-size: 14px;
+}
+.failure-button {
+  font-family: 'Roboto';
+  color: #ffffff;
+  background-color: #3392ff;
+  border-width: 0px;
+  font-size: 11px;
+  padding: 6px 12px 6px 12px;
+  cursor: pointer;
+}
+.failureView {
+  width: 150px;
+  height: 100px;
+}
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

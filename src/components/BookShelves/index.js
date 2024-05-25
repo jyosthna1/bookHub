@@ -1,5 +1,8 @@
 import {BsSearch} from 'react-icons/bs'
+import {Link} from 'react-router-dom'
+import Loader from 'react-loader-spinner'
 import {Component} from 'react'
+import Cookies from 'js-cookie'
 import Header from '../Header'
 import TabItem from '../TabItem'
 import './index.css'
@@ -39,6 +42,44 @@ class BookShelves extends Component {
     apiStatus: apiStatusConstants.initial,
     searchInput: '',
     activeTab: bookshelvesList[0].value,
+    bookDetailsData: [],
+  }
+
+  componentDidMount() {
+    this.getBookshelvesData()
+  }
+
+  getBookshelvesData = async () => {
+    this.setState({apiStatus: apiStatusConstants.inProgress})
+    const {searchInput, activeTab} = this.state
+    const jwtToken = Cookies.get('jwt_token')
+    const url = `https://apis.ccbp.in/book-hub/books?shelf=${activeTab}&search=${searchInput}`
+
+    const options = {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      method: 'GET',
+    }
+    const response = await fetch(url, options)
+    if (response.ok === true) {
+      const data = await response.json()
+
+      const bookData = data.books.map(eachBook => ({
+        authorName: eachBook.author_name,
+        coverPic: eachBook.cover_pic,
+        id: eachBook.id,
+        rating: eachBook.rating,
+        readStatus: eachBook.read_status,
+        title: eachBook.title,
+      }))
+      this.setState({
+        bookDetailsData: bookData,
+        apiStatus: apiStatusConstants.success,
+      })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
+    }
   }
 
   onChangeSearchInput = event => {
@@ -82,6 +123,43 @@ class BookShelves extends Component {
     )
   }
 
+  renderLoadingView = () => (
+    <div className="loader-container" testid="loader">
+      <Loader type="TailSpin" color="blue" height="50" width="50" />
+    </div>
+  )
+
+  failureView = () => (
+    <div className="failure-container-book">
+      <img
+        src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704263013/Group_7522_sbjwvs.png"
+        alt="failure view"
+        className="failureView-book"
+      />
+      <p className="failure-head-book">
+        Something went wrong. Please try again
+      </p>
+      <Link to="/shelf">
+        <button className="failure-button-book" type="button">
+          Try Again
+        </button>
+      </Link>
+    </div>
+  )
+
+  renderBookDetails = () => {
+    const {apiStatus} = this.state
+
+    switch (apiStatus) {
+      case apiStatusConstants.inProgress:
+        return this.renderLoadingView()
+      case apiStatusConstants.failure:
+        return this.failureView()
+      default:
+        return null
+    }
+  }
+
   render() {
     return (
       <div className="bookshelves-container">
@@ -91,6 +169,9 @@ class BookShelves extends Component {
           <div className="tab-items">
             <h1 className="tab-head">Bookshelves</h1>
             {this.renderTabList()}
+          </div>
+          <div className="book-details-render-container">
+            {this.renderBookDetails()}
           </div>
         </div>
       </div>
