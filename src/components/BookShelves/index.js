@@ -5,6 +5,7 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import TabItem from '../TabItem'
+import BookShelveItem from '../BookShelveItem'
 import './index.css'
 
 const bookshelvesList = [
@@ -147,6 +148,19 @@ class BookShelves extends Component {
     </div>
   )
 
+  renderSuccessView = () => {
+    const {bookDetailsData, activeTab} = this.state
+
+    return (
+      <div className="book-list-each-category-container">
+        <h1 className="head-category">{activeTab} Books</h1>
+        {bookDetailsData.map(eachBook => (
+          <BookShelveItem details={eachBook} key={eachBook.id} />
+        ))}
+      </div>
+    )
+  }
+
   renderBookDetails = () => {
     const {apiStatus} = this.state
 
@@ -155,6 +169,8 @@ class BookShelves extends Component {
         return this.renderLoadingView()
       case apiStatusConstants.failure:
         return this.failureView()
+      case apiStatusConstants.success:
+        return this.renderSuccessView()
       default:
         return null
     }
