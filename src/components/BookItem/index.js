@@ -9,7 +9,7 @@ const BookItem = props => {
       <div className="book-container">
         <img src={coverPic} className="BookImage" alt={title} />
         <h1 className="titleOfBook">{title}</h1>
-        <h1 className="authorNameOfBook">{authorName}</h1>
+        <p className="authorNameOfBook">{authorName}</p>
       </div>
     </Link>
   )

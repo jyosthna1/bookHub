@@ -175,9 +175,9 @@ class BookShelves extends Component {
               alt="no books"
               className="noBooksImage"
             />
-            <h1 className="not-found-head">
+            <p className="not-found-head">
               Your search for {searchInput} did not find any matches.
-            </h1>
+            </p>
           </div>
         ) : (
           <div className="book-list-each-category-container">
