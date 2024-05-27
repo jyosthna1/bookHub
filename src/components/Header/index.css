@@ -1,90 +1,61 @@
-.header-container {
+.header-nav-container {
   display: flex;
+  border-bottom: 1px solid rgb(243, 243, 243);
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 25px;
+  padding-right: 25px;
   justify-content: space-between;
   align-items: center;
-  padding-top: 13px;
-  padding-bottom: 13px;
-  padding-left: 36px;
-  padding-right: 36px;
-  border: 1px solid #e4e7eb;
-}
-.website-logo {
-  height: 40px;
-  width: 160px;
-}
-@media screen and (min-width: 768px) {
-  .header-container {
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
 }
 
-.page-icons-container {
-  display: none;
-}
 @media screen and (min-width: 768px) {
-  .page-icons-container {
-    display: flex;
-    align-items: center;
+  .header-nav-container {
+    padding-right: 35px;
+    padding-left: 35px;
   }
 }
-.pageName {
-  font-family: 'Roboto';
-  font-size: 13px;
-  font-weight: 500;
-  padding-right: 15px;
-}
-.pageNameGrey {
-  color: gray;
-}
-.pageNameBlue {
-  color: #3392ff;
-}
-.logoutButton {
-  background-color: #3392ff;
-  color: #ffffff;
-  font-family: 'Roboto';
-  font-size: 12px;
-  font-weight: 400;
-  border-width: 0px;
-  padding: 5px 10px 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.menuIcon {
-  height: 22px;
-  width: 22px;
+.website-logo-header {
+  width: 120px;
+  height: 30px;
 }
 @media screen and (min-width: 768px) {
-  .menuIcon {
+  .website-logo-header {
+    width: 140px;
+    height: 37px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .menu-icon {
     display: none;
   }
-}
-
-.smallDevicesItems {
-  display: flex;
-  padding-left: 36px;
-  padding-right: 36px;
-  align-items: center;
-  margin: 0px;
-}
-@media screen and (min-width: 768px) {
-  .smallDevicesItems {
-    display: none;
-  }
-}
-.closeIcon {
-  margin-left: 16px;
-  height: 25px;
-  width: 25px;
-}
-.link-style {
-  text-decoration: none;
-  cursor: pointer;
 }
 .header-un-order-list {
-  list-style-type: none;
   display: flex;
+  list-style-type: none;
+  text-decoration: none;
+  align-items: center;
+}
+@media screen and (max-width: 767px) {
+  .header-un-order-list {
+    display: none;
+  }
+}
+.link-option {
+  padding-right: 16px;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+}
+.logout-button {
+  border-width: 0px;
+  background-color: #0284c7;
+  color: #ffffff;
+  border-radius: 5px;
+  font-family: 'Roboto';
+  font-size: 12px;
+  padding: 6px 15px 6px 15px;
+  cursor: pointer;
 }

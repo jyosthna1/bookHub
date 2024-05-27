@@ -20,61 +20,28 @@ class Header extends Component {
     history.replace('/login')
   }
 
+  getHeaderLinks = () => (
+    <ul className="header-un-order-list">
+      <li className="link-option">Home</li>
+      <li className="link-option">Bookshelves</li>
+      <button type="button" className="logout-button">
+        Logout
+      </button>
+    </ul>
+  )
+
   render() {
     const {smallDevicesMenu} = this.state
     return (
       <nav>
-        <div className="header-page">
-          <div className="header-container">
-            <Link to="/" className="link-style">
-              <img
-                src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
-                alt="website logo"
-                className="website-logo"
-              />
-            </Link>
-            <div className="page-icons-container">
-              <ul className="header-un-order-list">
-                <Link to="/" className="link-style">
-                  <li className="pageName">Home</li>
-                </Link>
-                <Link to="/shelf" className="link-style">
-                  <li className="pageName">Bookshelves</li>
-                </Link>
-              </ul>
-              <button
-                type="button"
-                className="logoutButton"
-                onClick={this.onClickLogOut}
-              >
-                Logout
-              </button>
-            </div>
-            <HiMenu className="menuIcon" onClick={this.onClickChangeMenu} />
-          </div>
-          {smallDevicesMenu && (
-            <div className="smallDevicesItems">
-              <ul className="header-un-order-list">
-                <Link to="/" className="link-style">
-                  <li className="pageName">Home</li>
-                </Link>
-                <Link to="/shelf" className="link-style">
-                  <li className="pageName">Bookshelves</li>
-                </Link>
-              </ul>
-              <button
-                type="button"
-                className="logoutButton"
-                onClick={this.onClickLogOut}
-              >
-                Logout
-              </button>
-              <IoIosCloseCircle
-                className="closeIcon"
-                onClick={this.onClickChangeMenu}
-              />
-            </div>
-          )}
+        <div className="header-nav-container">
+          <img
+            src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
+            alt="website logo"
+            className="website-logo-header"
+          />
+          <HiMenu size="28" className="menu-icon" />
+          {this.getHeaderLinks()}
         </div>
       </nav>
     )
