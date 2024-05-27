@@ -3,6 +3,7 @@
   flex-direction: column;
   background-color: #f8fafc;
   width: 100vw;
+  min-height: 600px;
 }
 .bookshelves-category-list {
   display: flex;
@@ -15,6 +16,10 @@
     flex-direction: row;
     padding: 40px;
   }
+}
+.search-button {
+  border-width: 0px;
+  background-color: transparent;
 }
 .search-icon {
   color: #475569;
@@ -35,6 +40,7 @@
   .search-input-container {
     order: 1;
     width: 20vw;
+    height: 40px;
   }
 }
 .search {
@@ -127,4 +133,46 @@
   font-family: 'Roboto';
   font-size: 16px;
   color: #334155;
+}
+.un-order-book-list-item {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+}
+@media screen and (min-width: 768px) {
+  .un-order-book-list-item {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.noBooksImage {
+  height: 200px;
+  width: 250px;
+}
+@media screen and (min-width: 768px) {
+  .noBooksImage {
+    height: 300px;
+    width: 350px;
+  }
+}
+.not-found-head {
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .not-found-head {
+    font-size: 20px;
+  }
 }

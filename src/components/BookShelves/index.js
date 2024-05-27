@@ -5,6 +5,7 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import TabItem from '../TabItem'
+import Footer from '../Footer'
 import BookShelveItem from '../BookShelveItem'
 import './index.css'
 
@@ -87,6 +88,10 @@ class BookShelves extends Component {
     this.setState({searchInput: event.target.value})
   }
 
+  onClickSearch = () => {
+    this.getBookshelvesData()
+  }
+
   renderSearchInput = () => {
     const {searchInput} = this.state
     return (
@@ -98,13 +103,20 @@ class BookShelves extends Component {
           placeholder="Search"
           onChange={this.onChangeSearchInput}
         />
-        <BsSearch className="search-icon" />
+        <button
+          type="button"
+          testid="searchButton"
+          className="search-button"
+          onClick={this.onClickSearch}
+        >
+          <BsSearch className="search-icon" />
+        </button>
       </div>
     )
   }
 
   onClickTab = value => {
-    this.setState({activeTab: value})
+    this.setState({activeTab: value}, this.getBookshelvesData)
   }
 
   renderTabList = () => {
@@ -149,15 +161,35 @@ class BookShelves extends Component {
   )
 
   renderSuccessView = () => {
-    const {bookDetailsData, activeTab} = this.state
+    const {bookDetailsData, activeTab, searchInput} = this.state
+    const category = bookshelvesList.find(
+      eachItem => eachItem.value === activeTab,
+    )
 
     return (
-      <div className="book-list-each-category-container">
-        <h1 className="head-category">{activeTab} Books</h1>
-        {bookDetailsData.map(eachBook => (
-          <BookShelveItem details={eachBook} key={eachBook.id} />
-        ))}
-      </div>
+      <>
+        {bookDetailsData.length === 0 ? (
+          <div className="not-found-container">
+            <img
+              src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704451139/Group_aegii4.png"
+              alt="no books"
+              className="noBooksImage"
+            />
+            <h1 className="not-found-head">
+              Your search for {searchInput} did not find any matches.
+            </h1>
+          </div>
+        ) : (
+          <div className="book-list-each-category-container">
+            <h1 className="head-category">{category.label} Books</h1>
+            <ul className="un-order-book-list-item">
+              {bookDetailsData.map(eachBook => (
+                <BookShelveItem details={eachBook} key={eachBook.id} />
+              ))}
+            </ul>
+          </div>
+        )}
+      </>
     )
   }
 
@@ -190,6 +222,7 @@ class BookShelves extends Component {
             {this.renderBookDetails()}
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

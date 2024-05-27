@@ -1,48 +1,44 @@
 .bookShelveListContainerItems {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 @media screen and (min-width: 768px) {
   .bookShelveListContainerItems {
-    width: 500px;
+    width: 380px;
   }
 }
-.detailsContainer {
+.detailsContainer-bookshelve {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
-.cover-pic {
+.cover-pic-book {
   height: 150px;
   width: 100px;
   border-radius: 10px;
   margin-right: 12px;
 }
-.bookTitle {
+.bookTitle-bookshelve {
   font-family: 'Roboto';
   font-size: 16px;
-  margin-bottom: 6px;
+  margin: 0px;
   font-weight: 600;
-  letter-spacing: 0px;
-  text-align: left;
   color: #334155;
 }
-.authorName {
+.authorName-bookshelve {
   font-family: 'Roboto';
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
-  text-align: left;
+  margin: 0px;
   color: #475569;
+  line-height: 2;
 }
 .ratingOfItem {
   font-family: 'Roboto';
   font-size: 12px;
   font-weight: 500;
-  margin-top: 6px;
-  line-height: 16px;
-  letter-spacing: 0px;
-  text-align: left;
   color: #475569;
+  margin: 0px;
+  line-height: 2;
 }
 .starIcon {
   color: #fbbf24;
@@ -56,10 +52,17 @@
   margin: 0px;
   text-align: left;
   color: #475569;
+  margin: 0px;
+  line-height: 2;
 }
 .statusData {
   color: #0284c7;
 }
 .link {
   text-decoration: none;
+}
+.rating-container-bookshleves {
+  display: flex;
+  align-items: center;
+  padding: 0px;
 }

@@ -10,11 +10,11 @@ const BookShelveItem = props => {
   return (
     <Link to={`/books/${id}`} className="link">
       <li className="bookShelveListContainerItems">
-        <img src={coverPic} className="cover-pic" alt={title} />
-        <div className="detailsContainer">
-          <h1 className="bookTitle">{title}</h1>
-          <p className="authorName">{authorName}</p>
-          <div>
+        <img src={coverPic} className="cover-pic-book" alt={title} />
+        <div className="detailsContainer-bookshelve">
+          <h1 className="bookTitle-bookshelve">{title}</h1>
+          <p className="authorName-bookshelve">{authorName}</p>
+          <div className="rating-container-bookshleves">
             <p className="ratingOfItem">Avg Rating</p>
             <BsFillStarFill className="starIcon" />
             <p className="ratingOfItem">{rating}</p>
