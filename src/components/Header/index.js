@@ -22,8 +22,12 @@ class Header extends Component {
 
   getHeaderLinks = () => (
     <ul className="header-un-order-list">
-      <li className="link-option">Home</li>
-      <li className="link-option">Bookshelves</li>
+      <Link to="/" className="link-decoration">
+        <li className="link-option">Home</li>
+      </Link>
+      <Link to="shelf" className="link-decoration">
+        <li className="link-option">Bookshelves</li>
+      </Link>
       <button type="button" className="logout-button">
         Logout
       </button>
@@ -35,11 +39,13 @@ class Header extends Component {
     return (
       <nav>
         <div className="header-nav-container">
-          <img
-            src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
-            alt="website logo"
-            className="website-logo-header"
-          />
+          <Link to="/" className="link-decoration">
+            <img
+              src="https://res.cloudinary.com/dhcm3a6yw/image/upload/v1704001373/Group_7732_fknwex.png"
+              alt="website logo"
+              className="website-logo-header"
+            />
+          </Link>
           <HiMenu size="28" className="menu-icon" />
           {this.getHeaderLinks()}
         </div>
